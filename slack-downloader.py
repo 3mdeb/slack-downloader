@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-# 
+#
 # slack-downloader
 # Author: Enrico Cambiaso
 # Email: enrico.cambiaso[at]gmail.com
 # GitHub project URL: https://github.com/auino/slack-downloader
-# 
+#
 
 import requests
 import json
@@ -30,10 +30,10 @@ if 'SLACK_TOKEN' in os.environ:
 	TOKEN = os.environ['SLACK_TOKEN']
 
 # output main directory, without slashes
-OUTPUTDIR = "data"
+OUTPUTDIR = "/slack/backup/"
 
 # enable debug?
-DEBUG = False
+DEBUG = True
 
 # enable extremely verbose debug?
 EXTREME_DEBUG = False
@@ -51,7 +51,7 @@ API = 'https://slack.com/api'
 MAINDIR = os.path.dirname(os.path.realpath(__file__))+'/'
 
 # useful to avoid duplicate downloads
-TIMESTAMPFILE = MAINDIR+"offset.txt"
+TIMESTAMPFILE = OUTPUTDIR+"offset.txt"
 
 # format a response in json format
 def response_to_json(response):
@@ -154,7 +154,7 @@ def make_requester():
 # main function
 if __name__ == '__main__':
 	# retrieving absolute output directory
-	OUTPUTDIR = MAINDIR+OUTPUTDIR
+	# OUTPUTDIR = MAINDIR+OUTPUTDIR
 	# creating main output directory, if needed
 	try:
 		os.stat(OUTPUTDIR)
